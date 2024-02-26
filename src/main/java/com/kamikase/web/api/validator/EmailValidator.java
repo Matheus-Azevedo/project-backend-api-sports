@@ -4,8 +4,7 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
 
-public class EmailValidator implements
-        ConstraintValidator<EmailValidation, String> {
+public class EmailValidator implements ConstraintValidator<EmailValidation, String> {
     private String message;
     @Override
     public void initialize(EmailValidation constraintAnnotation) {
@@ -15,7 +14,7 @@ public class EmailValidator implements
 
     @Override
     public boolean isValid(String nome, ConstraintValidatorContext constraintValidatorContext) {
-        if(nome.contains("@fuji.com")) {
+        if(nome.contains("@matheus.br")) {
             return true;
         }
         constraintValidatorContext.disableDefaultConstraintViolation();

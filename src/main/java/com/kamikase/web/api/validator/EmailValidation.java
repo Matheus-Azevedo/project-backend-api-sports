@@ -12,7 +12,7 @@ import java.lang.annotation.*;
 @Documented
 @Constraint(validatedBy = EmailValidator.class)
 public @interface EmailValidation {
-    String message() default "Email não é válido tente fuji.com ";
+    String message() default "Email não é válido tente matheus.br ";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

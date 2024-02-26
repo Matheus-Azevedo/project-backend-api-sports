@@ -1,4 +1,4 @@
-package com.kamikase.web.posbackend.validator;
+package com.kamikase.web.api.validator;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

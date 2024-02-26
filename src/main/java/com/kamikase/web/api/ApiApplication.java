@@ -1,4 +1,4 @@
-package com.kamikase.web.posbackend;
+package com.kamikase.web.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients
-public class PosBackendApplication {
+public class ApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PosBackendApplication.class, args);
+		SpringApplication.run(ApiApplication.class, args);
 	}
 
 }

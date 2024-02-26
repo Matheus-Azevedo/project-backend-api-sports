@@ -1,6 +1,5 @@
-package com.kamikase.web.posbackend.model;
+package com.kamikase.web.api.model;
 
-import com.kamikase.web.posbackend.validator.EmailValidation;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -8,12 +7,14 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
 
+import com.kamikase.web.api.validator.EmailValidation;
+
 import java.io.Serializable;
 
 @Getter
 @Setter
 @Entity
-public class Atleta implements Serializable {
+public class AtletaModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

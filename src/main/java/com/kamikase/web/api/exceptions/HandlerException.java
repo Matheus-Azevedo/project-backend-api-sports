@@ -1,6 +1,5 @@
-package com.kamikase.web.posbackend.exceptions;
+package com.kamikase.web.api.exceptions;
 
-import com.kamikase.web.posbackend.model.dto.ErrorDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
@@ -9,6 +8,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.kamikase.web.api.dto.ErrorDTO;
 
 import java.util.List;
 import java.util.NoSuchElementException;

@@ -5,17 +5,17 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.kamikase.web.api.model.AtletaModel;
+import com.kamikase.web.api.dto.AtletaDTO;
 
 import java.util.List;
 
 @Repository
 public interface AtletaRepository
-        extends JpaRepository<AtletaModel, Integer> {
+        extends JpaRepository<AtletaDTO, Integer> {
 
-    public List<AtletaModel> findByNomeOrderByNomeAsc(String nome);
+    public List<AtletaDTO> findByNomeOrderByNomeAsc(String nome);
 
     @Query(value = "select a from Atleta a where a.nome=:nome order by a.nome asc")
-    public List<AtletaModel> buscarNomeAtleta(@Param("nome") String nome);
+    public List<AtletaDTO> buscarNomeAtleta(@Param("nome") String nome);
 
 }

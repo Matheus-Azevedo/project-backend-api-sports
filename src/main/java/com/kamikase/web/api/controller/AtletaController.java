@@ -5,8 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.kamikase.web.api.client.ViaCepClient;
+import com.kamikase.web.api.dto.AtletaDTO;
 import com.kamikase.web.api.dto.CepResponseDTO;
-import com.kamikase.web.api.model.AtletaModel;
 import com.kamikase.web.api.service.AtletaService;
 
 import java.util.List;
@@ -21,38 +21,40 @@ public class AtletaController {
     @Autowired
     private ViaCepClient viaCepClient;
 
-    @PostMapping
-    public ResponseEntity<AtletaModel> cadastrar(@RequestBody AtletaModel atleta){
+    @PostMapping("/cadastrar")
+    public ResponseEntity<AtletaDTO> cadastrar(@RequestBody AtletaDTO atleta){
         atleta = service.cadastrar(atleta);
         return ResponseEntity.ok(atleta);
     }
 
-    @PutMapping
-    public ResponseEntity<AtletaModel> alterar(@RequestBody AtletaModel atleta){
+    @PutMapping("/alterar")
+    public ResponseEntity<AtletaDTO> alterar(@RequestBody AtletaDTO atleta){
         atleta = service.alterar(atleta);
         return ResponseEntity.ok(atleta);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/deletar/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Integer id){
         service.deletar(id);
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("{id}")
-    public ResponseEntity<AtletaModel> consultarPorId(@PathVariable Integer id){
+    @GetMapping("/buscar/{id}")
+    public ResponseEntity<AtletaDTO> consultarPorId(@PathVariable Integer id){
         return ResponseEntity.ok(service.consultarPorId(id));
     }
 
-    @GetMapping
-    public ResponseEntity<List<AtletaModel>> listarTodos(){
+    @GetMapping("/buscar/todos")
+    public ResponseEntity<List<AtletaDTO>> listarTodos(){
         return ResponseEntity.ok(service.listar());
     }
 
-    @GetMapping("/nome/{nome}")
-    public ResponseEntity<List<AtletaModel>> listarPorNome(@PathVariable String nome){
+    @GetMapping("/buscar/nome/{nome}")
+    public ResponseEntity<List<AtletaDTO>> listarPorNome(@PathVariable String nome){
         return ResponseEntity.ok(service.listarPorNome(nome));
     }
+
+    // Consulta externa
 
 
     @GetMapping("/cep/{cep}")

@@ -3,7 +3,7 @@ package com.kamikase.web.api.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kamikase.web.api.model.AtletaModel;
+import com.kamikase.web.api.dto.AtletaDTO;
 import com.kamikase.web.api.repository.AtletaRepository;
 
 import java.util.List;
@@ -11,22 +11,23 @@ import java.util.Objects;
 
 @Service
 public class AtletaService {
+
     @Autowired
     private AtletaRepository repository;
 
-    public AtletaModel cadastrar(AtletaModel atleta){
+    public AtletaDTO cadastrar(AtletaDTO atleta){
         return repository.save(atleta);
     }
 
-    public List<AtletaModel> listar(){
+    public List<AtletaDTO> listar(){
         return repository.findAll();
     }
 
-    public List<AtletaModel> listarPorNome(String nome){
+    public List<AtletaDTO> listarPorNome(String nome){
         return repository.findByNomeOrderByNomeAsc(nome);
     }
 
-    public AtletaModel alterar(AtletaModel atleta){
+    public AtletaDTO alterar(AtletaDTO atleta){
         if(Objects.isNull(atleta.getId())){
             throw new RuntimeException();
         }
@@ -37,7 +38,7 @@ public class AtletaService {
         repository.deleteById(id);
     }
 
-    public AtletaModel consultarPorId(Integer id){
+    public AtletaDTO consultarPorId(Integer id){
         return repository.findById(id)
                 .orElseThrow(RuntimeException::new);
     }

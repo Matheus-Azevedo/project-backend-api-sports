@@ -3,17 +3,16 @@ package com.kamikase.web.api.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.hibernate.validator.constraints.br.CPF;
 
 import com.kamikase.web.api.validator.EmailValidation;
 
 import java.io.Serializable;
 
-@Getter
-@Setter
+@Data
 @Entity
+@Table(name = "atleta")
 public class AtletaModel implements Serializable {
 
     @Id

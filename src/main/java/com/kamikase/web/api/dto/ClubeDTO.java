@@ -6,9 +6,9 @@ import lombok.Data;
 public class ClubeDTO {
   
     private Integer id;
+    private String nome_popular;
+    private String sigla;
+    private String escudo;
     private String nome;
-    private String estado;
-    private String email;
-    private String cnpj;
-    private String dataCriacao;
+    private String apelido;
 }

@@ -15,6 +15,7 @@ public class AtletaService {
     @Autowired
     private AtletaRepository repository;
 
+    @SuppressWarnings("null")
     public AtletaDTO cadastrar(AtletaDTO atleta){
         return repository.save(atleta);
     }
@@ -34,10 +35,12 @@ public class AtletaService {
         return repository.save(atleta);
     }
 
+    @SuppressWarnings("null")
     public void deletar(Integer id){
         repository.deleteById(id);
     }
 
+    @SuppressWarnings("null")
     public AtletaDTO consultarPorId(Integer id){
         return repository.findById(id)
                 .orElseThrow(RuntimeException::new);

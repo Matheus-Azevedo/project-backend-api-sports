@@ -1,12 +1,8 @@
 package com.kamikase.web.api.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
-import org.hibernate.validator.constraints.br.CPF;
 
-import com.kamikase.web.api.validator.EmailValidation;
 
 import java.io.Serializable;
 
@@ -18,15 +14,20 @@ public class AtletaModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(length = 150)
-    @NotEmpty(message = "O nome não pode ser nulo nem em branco")
+
+    @Column(length = 100)
     private String nome;
+
+    @Column(length = 100)
     private Integer anoNascimento;
+    
+    @Column(length = 100)
     private String esporte;
-    @Email
-    @EmailValidation
+
+    @Column(length = 100)
     private String email;
-    @CPF
+
+    @Column(length = 100)
     private String cpf;
 
 }

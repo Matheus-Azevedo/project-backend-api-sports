@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.kamikase.web.api.client.ViaCepClient;
-import com.kamikase.web.api.dto.AtletaDTO;
+import com.kamikase.web.api.dto.AtletaModel;
 import com.kamikase.web.api.dto.CepResponseDTO;
 import com.kamikase.web.api.service.AtletaService;
 
@@ -22,13 +22,13 @@ public class AtletaController {
     private ViaCepClient viaCepClient;
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<AtletaDTO> cadastrar(@RequestBody AtletaDTO atleta){
+    public ResponseEntity<AtletaModel> cadastrar(@RequestBody AtletaModel atleta){
         atleta = service.cadastrar(atleta);
         return ResponseEntity.ok(atleta);
     }
 
     @PutMapping("/alterar")
-    public ResponseEntity<AtletaDTO> alterar(@RequestBody AtletaDTO atleta){
+    public ResponseEntity<AtletaModel> alterar(@RequestBody AtletaModel atleta){
         atleta = service.alterar(atleta);
         return ResponseEntity.ok(atleta);
     }
@@ -40,17 +40,17 @@ public class AtletaController {
     }
 
     @GetMapping("/buscar/{id}")
-    public ResponseEntity<AtletaDTO> consultarPorId(@PathVariable Integer id){
+    public ResponseEntity<AtletaModel> consultarPorId(@PathVariable Integer id){
         return ResponseEntity.ok(service.consultarPorId(id));
     }
 
     @GetMapping("/buscar/todos")
-    public ResponseEntity<List<AtletaDTO>> listarTodos(){
+    public ResponseEntity<List<AtletaModel>> listarTodos(){
         return ResponseEntity.ok(service.listar());
     }
 
     @GetMapping("/buscar/nome/{nome}")
-    public ResponseEntity<List<AtletaDTO>> listarPorNome(@PathVariable String nome){
+    public ResponseEntity<List<AtletaModel>> listarPorNome(@PathVariable String nome){
         return ResponseEntity.ok(service.listarPorNome(nome));
     }
 

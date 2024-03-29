@@ -46,7 +46,7 @@ public class ClubeService {
 
   public List<ClubeDTO> listar(){
     ClubeDTO clubeDTO = modelMapper.map(repository.findAll(), ClubeDTO.class);
-    return Collections.singletonList(clubeDTO);
+    return List.of(clubeDTO);
   }
 
   public List<ClubeDTO> listarPorNome(String nome){

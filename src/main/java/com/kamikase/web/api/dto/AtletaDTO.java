@@ -3,9 +3,9 @@ package com.kamikase.web.api.dto;
 import lombok.Data;
 
 @Data
-public class AtletaModel {
+public class AtletaDTO {
 
-    private Long id;
+    private Integer id;
     private String nome;
     private Integer anoNascimento;
     private String esporte;

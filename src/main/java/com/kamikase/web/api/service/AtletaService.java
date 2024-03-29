@@ -1,9 +1,11 @@
 package com.kamikase.web.api.service;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kamikase.web.api.dto.AtletaModel;
+import com.kamikase.web.api.dto.AtletaDTO;
+import com.kamikase.web.api.model.AtletaModel;
 import com.kamikase.web.api.repository.AtletaRepository;
 
 import java.util.List;
@@ -15,24 +17,29 @@ public class AtletaService {
     @Autowired
     private AtletaRepository repository;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     @SuppressWarnings("null")
-    public AtletaModel cadastrar(AtletaModel atleta){
-        return repository.save(atleta);
+    public AtletaDTO cadastrar(AtletaDTO atleta){
+        AtletaModel model = modelMapper.map(atleta, AtletaModel.class);
+        return modelMapper.map(repository.save(model), AtletaDTO.class);
     }
 
-    public List<AtletaModel> listar(){
-        return repository.findAll();
+    public List<AtletaDTO> listar(){
+        AtletaDTO atletaDTO = modelMapper.map(repository.findAll(), AtletaDTO.class);
+        return List.of(atletaDTO);
     }
 
-    public List<AtletaModel> listarPorNome(String nome){
-        return repository.findByNomeOrderByNomeAsc(nome);
+    public List<AtletaDTO> listarPorNome(String nome){
+        AtletaDTO atletaDTO = modelMapper.map(repository.findByNomeOrderByNomeAsc(nome), AtletaDTO.class);
+        return List.of(atletaDTO);
     }
 
-    public AtletaModel alterar(AtletaModel atleta){
-        if(Objects.isNull(atleta.getId())){
-            throw new RuntimeException();
-        }
-        return repository.save(atleta);
+    public AtletaDTO alterar(AtletaDTO atleta){
+        AtletaModel model = modelMapper.map(atleta, AtletaModel.class);
+        Objects.requireNonNull(model.getId());
+        return modelMapper.map(repository.save(model), AtletaDTO.class);
     }
 
     @SuppressWarnings("null")
@@ -41,9 +48,8 @@ public class AtletaService {
     }
 
     @SuppressWarnings("null")
-    public AtletaModel consultarPorId(Integer id){
-        return repository.findById(id)
-                .orElseThrow(RuntimeException::new);
+    public AtletaDTO consultarPorId(Integer id){
+        return repository.findById(id).map(atleta -> modelMapper.map(atleta, AtletaDTO.class)).orElse(null);
     }
 
 }
